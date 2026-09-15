@@ -1,0 +1,24 @@
+{
+  "name": "GCP Terraform",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+
+  "features": {
+    "ghcr.io/devcontainers/features/terraform:1": {},
+    "ghcr.io/dhoeric/features/google-cloud-cli:1": {}
+  },
+
+  // keeps your gcloud login across container rebuilds
+  "mounts": [
+    "source=gcloud-config,target=/home/vscode/.config/gcloud,type=volume"
+  ],
+  "postCreateCommand": "sudo chown -R vscode /home/vscode/.config/gcloud",
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "hashicorp.terraform",
+        "googlecloudtools.cloudcode"
+      ]
+    }
+  }
+}
